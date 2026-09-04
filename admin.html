@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADM - ANJOS AG</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0f0f0f;color:#fff;min-height:100vh;padding:20px}
+.box{background:#1a1a1a;padding:30px;border-radius:15px;max-width:500px;margin:20px auto;border:2px solid #ffcc00;text-align:center}
+input{padding:12px;width:90%;border-radius:8px;border:none;margin:8px;background:#2a2a2a;color:white}
+button{padding:12px 25px;background:#ffcc00;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:5px;color:#000}
+button:hover{background:#ffd700}
+#conteudoADM{display:none;max-width:800px;margin:auto}
+.card{background:#222;padding:15px;margin:12px 0;border-radius:10px;text-align:left;border-left:4px solid #ffcc00}
+.top{ background:#1a1a1a;padding:20px;border-radius:12px;margin-bottom:20px;border:2px solid #ffcc00;text-align:center}
+a{color:#ffcc00;text-decoration:none;font-weight:bold}
+</style>
+</head>
+<body>
+
+<div id="login" class="box">
+<h2>🔒 ÁREA ADM - ANJOS AG</h2>
+<p style="margin:15px 0;color:#aaa">Só o líder tem acesso</p>
+<input type="password" id="senha" placeholder="Digite a senha ADM">
+<br>
+<button onclick="entrar()">ENTRAR</button>
+<p id="erro" style="color:#ff4444;margin-top:10px"></p>
+</div>
+
+<div id="conteudoADM">
+<div class="top">
+<h2>👑 PAINEL ADM - ANJOS AG</h2>
+<p style="margin-top:10px">👁️ Total de visitas no site: <b id="totalVisitas" style="color:#ffcc00;font-size:22px">0</b></p>
+<p>📋 Total de pedidos: <b id="totalPedidos" style="color:#ffcc00">0</b></p>
+<div style="margin-top:15px">
+<button onclick="sair()">Sair</button>
+<button onclick="limpar()" style="background:#ff4444;color:white">Limpar Pedidos</button>
+</div>
+</div>
+
+<h3 style="margin:20px 0">🔥 QUEM QUER ENTRAR:</h3>
+<div id="listaPedidos"></div>
+</div>
+
+<script>
+const SENHA = 'ANJOS2026';
+function entrar(){
+  if(document.getElementById('senha').value === SENHA){
+    localStorage.setItem('admLogado','sim');
+    mostrar();
+  } else {
+    document.getElementById('erro').innerText='❌ Senha errada!';
+  }
+}
+function mostrar(){
+  document.getElementById('login').style.display='none';
+  document.getElementById('conteudoADM').style.display='block';
+  document.getElementById('totalVisitas').innerText = localStorage.getItem('visitasANJOS') || 0;
+  let lista = JSON.parse(localStorage.getItem('pedidosANJOS') || '[]');
+  document.getElementById('totalPedidos').innerText = lista.length;
+  let html = '';
+  if(lista.length===0) html='<p style="text-align:center;color:#aaa;margin-top:20px">Ninguém pediu pra entrar ainda</p>';
+  else {
+    lista.slice().reverse().forEach((p,i)=>{
+      html+=`<div class="card">
+      <b style="font-size:18px">🎮 ${p.nick}</b> - Level ${p.level}<br>
+      📱 Zap: ${p.zap}<br>
+      <small style="color:#aaa">📅 ${p.data}</small><br><br>
+      <a href="https://wa.me/55${p.zap.replace(/\D/g,'')}" target="_blank">💬 Chamar no Zap</a>
+      </div>`;
+    });
+  }
+  document.getElementById('listaPedidos').innerHTML = html;
+}
+function sair(){ localStorage.removeItem('admLogado'); location.reload(); }
+function limpar(){ if(confirm('Apagar todos os pedidos?')){ localStorage.removeItem('pedidosANJOS'); location.reload(); } }
+if(localStorage.getItem('admLogado')==='sim') mostrar();
+// Contador visita
+let v = parseInt(localStorage.getItem('visitasANJOS')||'0'); localStorage.setItem('visitasANJOS', v+1);
+</script>
+</body>
+</html>
