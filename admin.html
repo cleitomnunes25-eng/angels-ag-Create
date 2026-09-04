@@ -3,62 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADM - ANJOS AG LVL 1</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#0a0a0a;color:#fff}
-.login{height:100vh;display:flex;align-items:center;justify-content:center}
-.box{background:#111;padding:30px;border-radius:15px;border:2px solid #ffcc00;text-align:center;width:90%;max-width:350px}
-.box input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none;background:#222;color:#fff}
-.btn{background:#ffcc00;color:#000;padding:12px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;width:100%;margin-top:10px}
-.painel{display:none;padding:15px;max-width:900px;margin:0 auto}
-.header{display:flex;justify-content:space-between;align-items:center;background:#111;padding:15px;border-radius:10px;border:1px solid #333;margin-bottom:15px}
-.card{background:#111;padding:15px;border-radius:10px;border:1px solid #333;margin-bottom:15px}
-.card h3{color:#ffcc00;margin-bottom:10px}
-.item{background:#1a1a1a;padding:10px;border-radius:8px;display:flex;gap:6px;margin-bottom:8px;align-items:center}
-.item input{flex:1;padding:8px;border-radius:5px;border:none;background:#222;color:#fff;font-size:12px}
-.small{font-size:11px;color:#888;margin-bottom:10px}
-</style>
-</head>
-<body>
-<div id="telaLogin" class="login">
-<div class="box"><h1 style="color:#ffcc00">ANJOS AG</h1><p>LVL 1 - Painel</p><input type="password" id="senha" placeholder="Senha"><button class="btn" onclick="logar()">ENTRAR</button><p id="erro" style="color:#ff4444;margin-top:10px;display:none">Senha errada!</p></div>
-</div>
-<div id="painel" class="painel">
-<div class="header"><h2 style="color:#ffcc00">👑 PAINEL ANJOS - LVL 1</h2><button class="btn" style="width:auto;padding:8px 15px" onclick="location.reload()">Sair</button></div>
-<div class="card">
-<h3>⚔️ EDITAR FUNÇÃO DOS MEMBROS</h3>
-<p class="small">Edite direto aqui: Cargo, Nick e o que faz. Depois clique em SALVAR.</p>
-<div id="listaFunc"></div>
-<button class="btn" onclick="salvarFunc()">💾 SALVAR NO SITE</button>
-<button class="btn" style="background:#222;color:#fff;margin-top:8px" onclick="addFunc()">+ Adicionar Função</button>
-</div>
-<div class="card"><h3>🔗 Link da Guilda</h3><p style="font-size:12px;word-break:break-all">https://ffshare.garena.com/?region=BR&lang=pt-br&action=locate_clan&clan_id=2067130395</p><br><a href="/" target="_blank" style="color:#ffcc00">Ver Site Principal →</a></div>
-</div>
-<script>
-const SENHA="ANJOS2026";
-let funcoes = JSON.parse(localStorage.getItem("anjos_funcoes")) || [
-{cargo:"👑 LÍDER", nick:"ANJOS•LIDER", desc:"Dono da guilda / Recruta"},
-{cargo:"🛡️ VICE-LÍDER", nick:"ANJOS•VICE", desc:"Gerencia e aprova"},
-{cargo:"💥 RUSHER", nick:"ANJOS•RUSH", desc:"Linha de frente, quebra gelo"},
-{cargo:"🎯 SNIPER", nick:"ANJOS•SNIPER", desc:"Cobre o rush"},
-{cargo:"🧠 CAPITÃO 4x4", nick:"ANJOS•CAP", desc:"Monta time e chama sala"},
-{cargo:"👶 RECRUTA", nick:"Em teste 3 dias", desc:"Precisa jogar todo dia"}
-];
-function logar(){if(document.getElementById("senha").value===SENHA){document.getElementById("telaLogin").style.display="none";document.getElementById("painel").style.display="block";renderFunc();}else{document.getElementById("erro").style.display="block";}}
-function renderFunc(){let h="";funcoes.forEach((f,i)=>{h+=`<div class="item"><input value="${f.cargo}" oninput="funcoes[${i}].cargo=this.value"><input value="${f.nick}" oninput="funcoes[${i}].nick=this.value"><input value="${f.desc}" oninput="funcoes[${i}].desc=this.value"><span onclick="delFunc(${i})" style="cursor:pointer">❌</span></div>`;});document.getElementById("listaFunc").innerHTML=h;}
-function salvarFunc(){localStorage.setItem("anjos_funcoes",JSON.stringify(funcoes));alert("✅ SALVO! Agora vai no site e dá F5 que vai atualizar!");}
-function addFunc(){funcoes.push({cargo:"NOVA",nick:"Nick",desc:"Função"});renderFunc();}
-function delFunc(i){funcoes.splice(i,1);renderFunc();}
-</script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ADM PRO - ANJOS AG</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
