@@ -24,71 +24,39 @@ body{background:#0a0a0a;color:#fff;min-height:100vh}
 </style>
 </head>
 <body>
-
 <div id="telaLogin" class="login">
 <div class="box">
 <h1>ANJOS - AG</h1>
 <p>Painel do Líder</p>
-<input type="password" id="senha" placeholder="Senha de ADM">
+<input type="password" id="senha" placeholder="Senha">
 <button class="btn" onclick="logar()">ENTRAR</button>
 <p id="erro" style="color:#ff4444;margin-top:10px;display:none">Senha errada!</p>
 </div>
 </div>
-
 <div id="painel" class="painel">
 <div class="header">
 <h2 style="color:#ffcc00">👑 PAINEL ANJOS AG</h2>
 <button class="btn" style="width:auto;padding:8px 15px" onclick="location.reload()">Sair</button>
 </div>
-
 <div class="stats">
-<div class="card"><b id="total">12</b>Membros</div>
-<div class="card"><b id="online">8</b>Online</div>
-<div class="card"><b>LVL 6</b>Guilda</div>
+<div class="card"><b id="total">4</b>Membros</div>
+<div class="card"><b id="online">3</b>Online</div>
+<div class="card"><b>LVL 1</b>Guilda</div>
 </div>
-
 <div class="list">
-<h3 style="margin-bottom:15px">⚔️ Membros da Guilda</h3>
+<h3 style="margin-bottom:15px">⚔️ Membros</h3>
 <div id="lista"></div>
 <br>
-<input type="text" id="novoNick" placeholder="Nick do novo membro" style="width:70%;padding:10px;border-radius:8px;border:none;background:#222;color:#fff">
+<input type="text" id="novoNick" placeholder="Nick" style="width:70%;padding:10px;border-radius:8px;border:none;background:#222;color:#fff">
 <button class="btn" style="width:28%;margin-left:2%" onclick="add()">Add</button>
 </div>
-<br>
-<div class="list">
-<h3>🔗 Links Rápidos</h3>
-<p style="margin-top:10px;color:#ccc">Site público: <a href="/" style="color:#ffcc00">angels-ag-create.vercel.app</a></p>
-<p style="margin-top:5px;color:#ccc">WhatsApp Guilda: <a href="https://wa.me/5511910813256" style="color:#ffcc00">5511910813256</a></p>
 </div>
-</div>
-
 <script>
-const SENHA = "ANJOS2026";
-let membros = JSON.parse(localStorage.getItem("anjos_membros")) || ["ANJOS•LIDER","ANJOS•RUSH","ANJOS•SNIPER","ANJOS•SUPORTE"];
-
-function logar(){
- if(document.getElementById("senha").value === SENHA){
-   document.getElementById("telaLogin").style.display="none";
-   document.getElementById("painel").style.display="block";
-   render();
- } else {
-   document.getElementById("erro").style.display="block";
- }
-}
-function render(){
- document.getElementById("total").innerText = membros.length;
- document.getElementById("online").innerText = Math.floor(membros.length*0.7);
- let h="";
- membros.forEach((n,i)=>{
-   h+=`<div class="item"><span>👤 ${n}</span><span><span class="tag ${i%3==0?'off':'on'}">${i%3==0?'OFF':'ON'}</span> <span onclick="del(${i})" style="cursor:pointer;margin-left:8px">❌</span></span></div>`;
- });
- document.getElementById("lista").innerHTML=h;
- localStorage.setItem("anjos_membros",JSON.stringify(membros));
-}
-function add(){
- let v=document.getElementById("novoNick").value;
- if(v){membros.push(v);document.getElementById("novoNick").value="";render();}
-}
+const SENHA="ANJOS2026";
+let membros=JSON.parse(localStorage.getItem("anjos_membros"))||["ANJOS•LIDER","ANJOS•RUSH","ANJOS•SNIPER","ANJOS•SUPORTE"];
+function logar(){if(document.getElementById("senha").value===SENHA){document.getElementById("telaLogin").style.display="none";document.getElementById("painel").style.display="block";render();}else{document.getElementById("erro").style.display="block";}}
+function render(){document.getElementById("total").innerText=membros.length;document.getElementById("online").innerText=Math.floor(membros.length*0.7);let h="";membros.forEach((n,i)=>{h+=`<div class="item"><span>👤 ${n}</span><span><span class="tag ${i%3==0?'off':'on'}">${i%3==0?'OFF':'ON'}</span> <span onclick="del(${i})" style="cursor:pointer;margin-left:8px">❌</span></span></div>`;});document.getElementById("lista").innerHTML=h;localStorage.setItem("anjos_membros",JSON.stringify(membros));}
+function add(){let v=document.getElementById("novoNick").value;if(v){membros.push(v);document.getElementById("novoNick").value="";render();}}
 function del(i){membros.splice(i,1);render();}
 </script>
 </body>
