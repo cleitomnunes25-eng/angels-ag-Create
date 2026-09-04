@@ -81,3 +81,25 @@ let v = parseInt(localStorage.getItem('visitasANJOS')||'0'); localStorage.setIte
 </script>
 </body>
 </html>
+<div id="entrar-guilda" style="background:#1a1a1a;padding:25px;border-radius:12px;margin:30px auto;max-width:500px;border:2px solid #ffcc00;text-align:center">
+<h3 style="color:#ffcc00">🔥 QUER ENTRAR PRA ANJOS AG?</h3>
+<input id="nome" placeholder="Seu nick no Free Fire" style="padding:12px;width:90%;margin:6px;border-radius:8px;border:none;background:#2a2a2a;color:white"><br>
+<input id="zap" placeholder="Seu WhatsApp (ex: 11910813256)" style="padding:12px;width:90%;margin:6px;border-radius:8px;border:none;background:#2a2a2a;color:white"><br>
+<input id="level" placeholder="Seu Level" style="padding:12px;width:90%;margin:6px;border-radius:8px;border:none;background:#2a2a2a;color:white"><br>
+<button onclick="enviar()" style="padding:12px 30px;background:#ffcc00;border:none;border-radius:8px;font-weight:bold;margin-top:12px;cursor:pointer">ENVIAR PEDIDO</button>
+</div>
+<script>
+function enviar(){
+  let nick=document.getElementById('nome').value;
+  let zap=document.getElementById('zap').value;
+  let level=document.getElementById('level').value;
+  if(!nick||!zap){alert('Preencha nick e zap!');return;}
+  let dados={nick: nick, zap: zap, level: level, data: new Date().toLocaleString('pt-BR')};
+  let lista=JSON.parse(localStorage.getItem('pedidosANJOS')||'[]');
+  lista.push(dados);
+  localStorage.setItem('pedidosANJOS', JSON.stringify(lista));
+  alert('✅ Pedido enviado! O ADM vai te chamar!');
+  window.open(`https://wa.me/5511910813256?text=Fala ADM! Quero entrar na ANJOS AG! Nick:${nick} Level:${level} Meu zap:${zap}`);
+}
+let v=parseInt(localStorage.getItem('visitasANJOS')||'0'); localStorage.setItem('visitasANJOS', v+1);
+</script>
