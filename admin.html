@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADMIN - ANJOS AG</title>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADMIN</title>
 <style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#000;color:#fff}.card{margin:12px;background:#111;border:1px solid #222;border-radius:14px;padding:16px}.card h2{font-size:18px}.card p{color:#777;font-size:12px;margin:4px 0 14px}.item{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:8px;margin-bottom:10px}.item input{background:#1c1c1c;border:none;color:#fff;padding:12px 10px;border-radius:10px;font-size:13px;outline:none}.btn-yellow{width:100%;background:#ffcc00;color:#000;border:none;padding:16px;border-radius:12px;font-weight:bold;cursor:pointer}.btn-gray{width:100%;background:#1e1e1e;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:bold;margin-top:10px;cursor:pointer}.footer{margin:12px;background:#111;border:1px solid #222;border-radius:14px;padding:14px}.footer a{color:#ffcc00}.login{height:100vh;display:flex;align-items:center;justify-content:center}.box{background:#111;padding:28px;border-radius:16px;border:2px solid #ffcc00;width:90%;max-width:340px;text-align:center}.box input{width:100%;padding:12px;border-radius:10px;border:none;background:#222;color:#fff;margin:8px 0}</style>
 </head>
 <body>
 <div id="login" class="login"><div class="box"><h1 style="color:#ffcc00">ANJOS AG</h1><input id="senha" type="password" placeholder="Senha ANJOS2026"><button class="btn-yellow" onclick="logar()">ENTRAR</button></div></div>
 <div id="painel" style="display:none">
-<div class="card"><h2>⚔️ FUNÇÕES (salva pra todo mundo)</h2><p>Edite e clique em SALVAR NA NUVEM. Todos verão.</p><div id="lista">Carregando...</div><button class="btn-yellow" id="btnSalvar" onclick="salvar()">☁️ SALVAR NA NUVEM</button><button class="btn-gray" onclick="add()">+ Adicionar</button><div id="status" style="text-align:center;margin-top:12px;color:#ffcc00;font-size:14px;font-weight:bold"></div></div>
+<div class="card"><h2>⚔️ FUNÇÕES (salva pra todo mundo)</h2><p>Edite e clique em SALVAR NA NUVEM. Todos verão.</p><div id="lista"></div><button class="btn-yellow" id="btnSalvar" onclick="salvar()">☁️ SALVAR NA NUVEM</button><button class="btn-gray" onclick="add()">+ Adicionar</button><div id="status" style="text-align:center;margin-top:12px;color:#ffcc00;font-size:14px;font-weight:bold"></div></div>
 <div class="footer"><a href="/">Ver Site →</a> | API: cd724d106314432c97e0f4260a9ca856</div>
 </div>
 <script>
 const API="https://crudcrud.com/api/cd724d106314432c97e0f4260a9ca856/funcoes";
-let idSalvo=null; let funcoes=[];
-async function logar(){if(document.getElementById("senha").value!=="ANJOS2026"){alert("Senha errada");return;}document.getElementById("login").style.display="none";document.getElementById("painel").style.display="block";carregar();}
-async function carregar(){
- try{
-  let r=await fetch(API); let data=await r.json();
-  if(data.length>0){idSalvo=data[0]._id; funcoes=data[0].dados;}
-  else{funcoes=[{cargo:"👑 LÍDER",nick:"ANJOS•LIDER",desc:"Dono da guilda"},{cargo:"🛡️ VICE-LÍDER",nick:"ANJOS•VICE",desc:"Gerencia membros"},{cargo:"💥 RUSHER",nick:"ANJOS•RUSH",desc:"Linha de frente"},{cargo:"🎯 SNIPER",nick:"ANJOS•SNIPER",desc:"Suporte"},{cargo:"🧠 CAPITÃO 4x4",nick:"ANJOS•CAP",desc:"Monta time"},{cargo:"👶 RECRUTA",nick:"Em teste 3 dias",desc:"Precisa jogar todo dia"}];}
-  render();
- }catch(e){document.getElementById("lista").innerHTML="Nuvem vazia - clique em SALVAR NA NUVEM"; funcoes=[{cargo:"👑 LÍDER",nick:"ANJOS•LIDER",desc:"Dono"},{cargo:"🛡️ VICE",nick:"ANJOS•VICE",desc:"Vice"}]; render();}
-}
+let idSalvo=null;
+let funcoes=[
+ {cargo:"👑 LÍDER",nick:"ANJOS•LIDER",desc:"Dono da guilda"},
+ {cargo:"🛡️ VICE-LÍDER",nick:"ANJOS•VICE",desc:"Gerencia membros"},
+ {cargo:"💥 RUSHER",nick:"ANJOS•RUSH",desc:"Linha de frente"},
+ {cargo:"🎯 SNIPER",nick:"ANJOS•SNIPER",desc:"Suporte"},
+ {cargo:"🧠 CAPITÃO 4x4",nick:"ANJOS•CAP",desc:"Monta time"},
+ {cargo:"👶 RECRUTA",nick:"Em teste 3 dias",desc:"Precisa jogar todo dia"}
+];
+function logar(){if(document.getElementById("senha").value!=="ANJOS2026"){alert("Senha errada");return;}document.getElementById("login").style.display="none";document.getElementById("painel").style.display="block";render(); carregarDaNuvem();}
 function render(){let h="";funcoes.forEach((f,i)=>{h+=`<div class="item"><input value="${f.cargo}" oninput="funcoes[${i}].cargo=this.value"><input value="${f.nick}" oninput="funcoes[${i}].nick=this.value"><input value="${f.desc}" oninput="funcoes[${i}].desc=this.value"></div>`});document.getElementById("lista").innerHTML=h;}
 function add(){funcoes.push({cargo:"⭐ NOVO",nick:"NICK",desc:"Descrição"});render();}
+async function carregarDaNuvem(){
+ try{
+  let r=await fetch(API); let data=await r.json();
+  if(data.length>0){idSalvo=data[0]._id; funcoes=data[0].dados; render(); document.getElementById("status").innerText="✅ Carregado da nuvem";}
+ }catch(e){}
+}
 async function salvar(){
  document.getElementById("status").innerText="Salvando..."; document.getElementById("btnSalvar").disabled=true;
  try{
   if(idSalvo){await fetch(API+"/"+idSalvo,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({dados:funcoes})});}
   else{let res=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({dados:funcoes})}); let j=await res.json(); idSalvo=j._id;}
-  document.getElementById("status").innerText="✅ SALVO PRA TODO MUNDO!";
- }catch(e){document.getElementById("status").innerText="❌ Erro, tenta de novo";}
+  document.getElementById("status").innerText="✅ SALVO PRA TODO MUNDO! Vai no site e dá F5";
+ }catch(e){document.getElementById("status").innerText="❌ Erro, mas tenta de novo - "+e.message;}
  document.getElementById("btnSalvar").disabled=false;
 }
 </script>
