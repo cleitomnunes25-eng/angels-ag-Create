@@ -1,198 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANGELS-AG | A Guilda Mais Temida do Free Fire</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        neon: '#a855f7',
-                        dark: '#0a0a0f',
-                        card: '#12121a',
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    },
-                },
-            },
-        };
-    </script>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>√ANGELS™ AG• - LVL 1</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0a0a0f;color:#fff}
+.top{background:#111;border-bottom:2px solid #ffcc00;padding:12px;text-align:center;font-size:12px}
+.top b{color:#ffcc00}
+.hero{display:flex;flex-wrap:wrap;gap:20px;padding:20px;max-width:1150px;margin:0 auto}
+.left{background:#16161f;border:2px solid #ffcc00;border-radius:20px;padding:25px;width:100%;max-width:320px;text-align:center;height:fit-content}
+.badge{width:130px;height:130px;margin:0 auto;background:#222;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:70px}
+.btn-main{display:block;background:#ffcc00;color:#000;padding:14px;border-radius:10px;font-weight:bold;text-decoration:none;margin-top:15px}
+.btn-outline{display:block;border:1px solid #ffcc00;color:#ffcc00;padding:12px;border-radius:10px;text-decoration:none;margin-top:10px}
+.right{flex:1;min-width:320px}
+.card{background:#16161f;border:1px solid #2a2a3a;border-radius:12px;padding:18px;margin-bottom:15px}
+.card h3{color:#ffcc00;font-size:13px;margin-bottom:12px}
+.row{display:flex;justify-content:space-between;background:#0f0f15;padding:10px;border-radius:8px;margin-bottom:6px;font-size:14px}
+.tag{display:inline-block;background:#ffcc00;color:#000;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:bold;margin:3px}
+.tag2{background:#222;color:#ccc;border:1px solid #333}
+.func-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.func{background:#0f0f15;border:1px solid #333;border-radius:10px;padding:12px}
+.func b{display:block;color:#ffcc00;font-size:12px;margin-bottom:4px}
+.func span{font-size:13px;color:#ddd}
+.func small{display:block;color:#777;font-size:11px;margin-top:3px}
+</style>
 </head>
-<body class="bg-dark font-sans text-white">
-    <!-- HEADER FIXO -->
-    <header class="fixed top-0 w-full z-50 bg-dark/90 backdrop-blur-md border-b border-neon/20">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 text-xl font-bold hover:scale-105 transition-transform">
-                <span class="text-2xl">👼</span>
-                <span class="text-neon">ANGELS-AG</span>
-            </a>
-            <a href="https://wa.me/5511910813256" target="_blank" class="btn-header">
-                ENTRAR NA GUILDA
-            </a>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div class="absolute inset-0 bg-gradient-to-b from-neon/10 via-transparent to-transparent"></div>
-        <div class="relative z-10 text-center px-4">
-            <div class="logo-container mx-auto mb-8">
-                <!-- SVG LOGO -->
-                <svg viewBox="0 0 200 220" class="w-48 h-auto mx-auto">
-                    <!-- Asas esquerdas -->
-                    <path d="M100 110 L30 60 Q20 50 35 40 Q50 30 70 50 L100 90 Z" fill="#a855f7" opacity="0.6"></path>
-                    <path d="M100 110 L25 80 Q15 70 30 60 Q45 50 65 70 L100 100 Z" fill="#a855f7" opacity="0.4"></path>
-                    <!-- Asas direitas -->
-                    <path d="M100 110 L170 60 Q180 50 165 40 Q150 30 130 50 L100 90 Z" fill="#a855f7" opacity="0.6"></path>
-                    <path d="M100 110 L175 80 Q185 70 170 60 Q155 50 135 70 L100 100 Z" fill="#a855f7" opacity="0.4"></path>
-                    <!-- Escudo -->
-                    <path d="M100 30 L140 50 L140 110 Q140 140 100 160 Q60 140 60 110 L60 50 Z" fill="#12121a" stroke="#a855f7" stroke-width="3"></path>
-                    <path d="M100 40 L130 55 L130 105 Q130 130 100 150 Q70 130 70 105 L70 55 Z" fill="#0a0a0f"></path>
-                    <!-- Borda interna do escudo -->
-                    <path d="M100 40 L130 55 L130 105 Q130 130 100 150 Q70 130 70 105 L70 55 Z" fill="none" stroke="#a855f7" stroke-width="1.5" opacity="0.5"></path>
-                    <!-- Texto AG no centro -->
-                    <text x="100" y="105" text-anchor="middle" font-size="32" font-weight="900" fill="#a855f7" font-family="Poppins, sans-serif" filter="url(#glow)">AG</text>
-                    <!-- Texto ANGELS em cima -->
-                    <text x="100" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#a855f7" font-family="Poppins, sans-serif" letter-spacing="3">ANGELS</text>
-                    <!-- Texto FREE FIRE GUILD embaixo -->
-                    <text x="100" y="178" text-anchor="middle" font-size="10" font-weight="600" fill="#a855f7" font-family="Poppins, sans-serif" letter-spacing="2" opacity="0.8">FREE FIRE GUILD</text>
-                    <!-- Glow filter -->
-                    <defs>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="3" result="coloredBlur"></feGaussianBlur>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"></feMergeNode>
-                                <feMergeNode in="SourceGraphic"></feMergeNode>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                </svg>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4">
-                A GUILDA MAIS <span class="text-neon glow-text">TEMIDA</span> DO FREE FIRE
-            </h1>
-            <p class="text-lg md:text-xl text-gray-400 mb-8">
-                🔥 Recrutamento aberto - Teste hoje às <span class="text-neon font-bold">19:00H</span>
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/5511910813256" target="_blank" class="btn-primary">
-                    QUERO FAZER TESTE
-                </a>
-                <a href="#regras" class="btn-secondary">
-                    VER REGRAS
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- REGRAS -->
-    <section id="regras" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="section-title">REGRAS 4x4 - 19:00H</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card">
-                    <h3 class="text-xl font-bold text-neon mb-4">🔫 ARMAS</h3>
-                    <div class="space-y-3 text-sm">
-                        <div>
-                            <p class="font-semibold text-green-400 mb-1">✅ LIBERADO</p>
-                            <p class="text-gray-400">AK, M4A1, SCAR, MP40, UMP</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-yellow-400 mb-1">⚠️ SÓ 1 POR TIME</p>
-                            <p class="text-gray-400">M1014, MAG-7, CG15, Trogon</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-red-400 mb-1">❌ PROIBIDO</p>
-                            <p class="text-gray-400">M1887, AWM, M82B, M79</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-bold text-neon mb-4">👤 PERSONAGENS</h3>
-                    <div class="space-y-3 text-sm">
-                        <div>
-                            <p class="font-semibold text-red-400 mb-1">❌ PROIBIDO</p>
-                            <p class="text-gray-400">WUKONG, MOCA, A124, ORION, CHRONO</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-yellow-400 mb-1">⚠️ SÓ 1</p>
-                            <p class="text-gray-400">TATSUYA</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-green-400 mb-1">✅ LIBERADO</p>
-                            <p class="text-gray-400">Alok, Kelly, Hayato, Luna, CLU, Jota...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-bold text-neon mb-4">⏰ HORÁRIO</h3>
-                    <div class="space-y-3 text-sm">
-                        <div>
-                            <p class="text-gray-400">🕕 Sala abre <span class="text-white font-semibold">18:50</span></p>
-                        </div>
-                        <div>
-                            <p class="text-gray-400">🚀 Início <span class="text-white font-semibold">19:00 EM PONTO</span></p>
-                        </div>
-                        <div>
-                            <p class="text-gray-400">⏱️ W.O <span class="text-white font-semibold">19:10</span></p>
-                        </div>
-                        <div>
-                            <p class="text-gray-400">🧊 Gelo máx <span class="text-white font-semibold">3</span></p>
-                        </div>
-                        <div>
-                            <p class="text-gray-400">🚫 Sem xingar/emote/bug telhado</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RECRUTAMENTO -->
-    <section id="recruta" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="section-title">RECRUTAMENTO</h2>
-            <div class="card max-w-md mx-auto">
-                <form id="formInscricao" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-400 mb-1">NICK</label>
-                        <input type="text" id="nick" required placeholder="Seu nick no Free Fire" class="input-field">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-400 mb-1">RANK</label>
-                            <input type="text" id="rank" required placeholder="Seu rank atual" class="input-field">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-400 mb-1">ID</label>
-                                <input type="text" id="id" required placeholder="Seu ID do Free Fire" class="input-field">
-                                </div>
-                                <button type="submit" class="btn-primary w-full">
-                                    ENVIAR INSCRIÇÃO - 19:00H
-                                </button>
-                                <p id="msg" class="text-center text-green-400 font-semibold hidden">✅ Inscrição enviada!</p>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- FOOTER -->
-                <footer class="py-10 px-4 border-t border-neon/20 bg-card/50">
-                    <div class="max-w-7xl mx-auto text-center space-y-2">
-                        <p class="text-xl font-bold text-neon">👼 ANGELS-AG</p>
-                        <p class="text-gray-400">ID da Guilda: <span class="text-neon font-bold">2067130395</span></p>
-                        <p class="text-gray-400">Contato: <a href="https://wa.me/5511910813256" target="_blank" class="text-neon hover:underline">+55 11 91081-3256</a></p>
-                        <p class="text-gray-500 text-sm">Copyright © 2026 ANGELS-AG</p>
-                    </div>
-                </footer>
-
-                <script src="script.js"></script>
-            </body>
-            </html>
+<body>
+<div class="top"><b>√ANGELS™ AG• | LVL 1 • COMPETITIVA | ID: 2067130395</b></div>
+<div class="hero">
+<div class="left">
+<div class="badge">🐺</div>
+<h1 style="margin:12px 0 5px;font-size:22px">√ANGELS™ AG•</h1>
+<p style="color:#ffcc00;font-weight:bold;font-size:13px">LVL 1 • COMPETITIVA</p>
+<a class="btn-main" href="https://ffshare.garena.com/?region=BR&lang=pt-br&action=locate_clan&clan_id=2067130395&version=OB54" target="_blank">🔥 ENTRAR NA GUILDA</a>
+<a class="btn-outline" href="https://wa.me/5511910813256" target="_blank">WhatsApp da Guilda</a>
+<p style="margin-top:15px;font-size:12px;color:#aaa">Seja bem vindo a nossa guilda!<br>Sejam bem vindos(a)</p>
+</div>
+<div class="right">
+<div class="card"><h3>⚙️ MÉTODO DE APROVAÇÃO</h3><div class="row"><span>Automático</span><b style="color:#ff4444">DESLIGADO</b></div><div class="row"><span>NV. Mínimo</span><b>20</b></div><div class="row"><span>BR Ranqueado</span><b>PLATINA I</b></div><div class="row"><span>CS Ranqueado</span><b>PLATINA I</b></div></div>
+<div class="card"><h3>🏷️ ETIQUETAS DA GUILDA</h3><span class="tag">COMPETITIVA</span><span class="tag tag2">DIÁRIA</span><span class="tag tag2">BATTLE ROYALE</span><span class="tag tag2">RUSHADOR DO BR</span></div>
+<div class="card" style="border:2px solid #ffcc00"><h3>⚔️ FUNÇÃO DOS MEMBROS</h3><div class="func-grid" id="funcGrid"></div></div>
+<div class="card"><h3>📜 LEMA</h3><p>seja bem vindo a nossa guilda!</p></div>
+<div class="card"><h3>📢 AVISO</h3><p>sejam bem vindos(a)</p></div>
+<div class="card" style="border:1px solid #ffcc00"><h3>🎮 CONVITE OFICIAL</h3><a href="https://ffshare.garena.com/?region=BR&lang=pt-br&action=locate_clan&clan_id=2067130395&version=OB54" target="_blank" style="color:#ffcc00;font-size:12px;word-break:break-all">ffshare.garena.com/?clan_id=2067130395</a></div>
+</div>
+</div>
+<div style="text-align:center;padding:20px;color:#444;font-size:11px">ADM? <a href="/admin.html" style="color:#444">painel</a> • ANJOS AG © 2026</div>
+<script>
+let padrao=[{cargo:"👑 LÍDER",nick:"ANJOS•LIDER",desc:"Dono da guilda / Recruta"},{cargo:"🛡️ VICE-LÍDER",nick:"ANJOS•VICE",desc:"Gerencia e aprova membros"},{cargo:"💥 RUSHER",nick:"ANJOS•RUSH",desc:"Linha de frente, quebra gelo"},{cargo:"🎯 SNIPER / SUPORTE",nick:"ANJOS•SNIPER",desc:"Cobre o rush, mira longa"},{cargo:"🧠 CAPITÃO 4x4",nick:"ANJOS•CAP",desc:"Chama sala e monta time"},{cargo:"👶 RECRUTA",nick:"Em teste 3 dias",desc:"Precisa jogar todo dia"}];
+let funcoes = JSON.parse(localStorage.getItem("anjos_funcoes")) || padrao;
+let h=""; funcoes.forEach(f=>{h+=`<div class="func"><b>${f.cargo}</b><span>${f.nick}</span><small>${f.desc}</small></div>`;});
+document.getElementById("funcGrid").innerHTML=h;
+</script>
+</body>
+</html>
