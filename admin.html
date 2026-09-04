@@ -53,3 +53,56 @@ function delFunc(i){funcoes.splice(i,1);renderFunc();}
 </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADM PRO - ANJOS AG</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0a0a0a;color:#fff}
+.login{height:100vh;display:flex;align-items:center;justify-content:center}
+.box{background:#111;padding:30px;border-radius:15px;border:2px solid #ffcc00;text-align:center;width:90%;max-width:350px}
+.box input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none;background:#222;color:#fff}
+.btn{background:#ffcc00;color:#000;padding:12px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;width:100%;margin-top:10px}
+.painel{display:none;padding:15px;max-width:900px;margin:0 auto}
+.header{display:flex;justify-content:space-between;align-items:center;background:#111;padding:15px;border-radius:10px;border:1px solid #333;margin-bottom:15px}
+.card{background:#111;padding:15px;border-radius:10px;border:1px solid #333;margin-bottom:15px}
+.item{background:#1a1a1a;padding:10px;border-radius:8px;display:flex;gap:6px;margin-bottom:8px;align-items:center}
+.item input{flex:1;padding:8px;border-radius:5px;border:none;background:#222;color:#fff;font-size:12px}
+</style>
+</head>
+<body>
+<div id="telaLogin" class="login"><div class="box"><h1 style="color:#ffcc00">ANJOS AG PRO</h1><input type="password" id="senha" placeholder="Senha"><button class="btn" onclick="logar()">ENTRAR</button><p id="erro" style="color:#ff4444;margin-top:10px;display:none">Senha errada!</p></div></div>
+<div id="painel" class="painel">
+<div class="header"><h2 style="color:#ffcc00">👑 PAINEL PRO - NUVEM</h2><button class="btn" style="width:auto;padding:8px 15px" onclick="location.reload()">Sair</button></div>
+<div class="card"><h3>⚔️ FUNÇÕES (salva pra todo mundo)</h3><p style="font-size:11px;color:#888;margin-bottom:10px">Edite e clique em SALVAR NA NUVEM. Todos verão.</p><div id="listaFunc">Carregando da nuvem...</div><button class="btn" id="btnSalvar" onclick="salvarFunc()">☁️ SALVAR NA NUVEM</button><button class="btn" style="background:#222;color:#fff;margin-top:8px" onclick="addFunc()">+ Adicionar</button><p id="status" style="margin-top:10px;font-size:12px"></p></div>
+<div class="card"><a href="/" target="_blank" style="color:#ffcc00">Ver Site →</a> | API: c41bd5bb4a6aae966dc7</div>
+</div>
+<script>
+const API="https://api.npoint.io/c41bd5bb4a6aae966dc7";
+const SENHA="ANJOS2026";
+let funcoes=[];
+async function logar(){
+if(document.getElementById("senha").value!==SENHA){document.getElementById("erro").style.display="block";return;}
+document.getElementById("telaLogin").style.display="none";
+document.getElementById("painel").style.display="block";
+let r=await fetch(API);
+funcoes=await r.json();
+renderFunc();
+}
+function renderFunc(){let h="";funcoes.forEach((f,i)=>{h+=`<div class="item"><input value="${f.cargo}" oninput="funcoes[${i}].cargo=this.value"><input value="${f.nick}" oninput="funcoes[${i}].nick=this.value"><input value="${f.desc}" oninput="funcoes[${i}].desc=this.value"><span onclick="delFunc(${i})" style="cursor:pointer">❌</span></div>`;});document.getElementById("listaFunc").innerHTML=h;}
+async function salvarFunc(){
+document.getElementById("status").innerText="Salvando na nuvem...";
+document.getElementById("btnSalvar").disabled=true;
+let res=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(funcoes)});
+if(res.ok){document.getElementById("status").innerText="✅ SALVO PRA TODO MUNDO! Vai no site e dá F5";}else{document.getElementById("status").innerText="❌ Erro ao salvar";}
+document.getElementById("btnSalvar").disabled=false;
+}
+function addFunc(){funcoes.push({cargo:"NOVA",nick:"Nick",desc:"Função"});renderFunc();}
+function delFunc(i){funcoes.splice(i,1);renderFunc();}
+</script>
+</body>
+</html>
